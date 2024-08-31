@@ -1,11 +1,7 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
-import './student.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-config.autoAddCss = false;
+"use client"; // ทำให้คอมโพเนนต์นี้เป็น Client Component
 
+import React from 'react';
+import './student.css';
 
 export default function AboutMe() {
   return (
@@ -48,15 +44,24 @@ export default function AboutMe() {
 
       <h2>Contact Me</h2>
       <div className="contact-links">
-        <a href="https://www.instagram.com/x.ontmz_/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faInstagram} size="2x" />
-        </a>
-        <a href="https://www.facebook.com/onpreeya.jantakote.96" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faFacebook} size="2x" />
-        </a>
-        <a href="https://github.com/653450107-5" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faGithub} size="2x" />
-        </a>
+        <button 
+          onClick={() => window.open('https://www.instagram.com/x.ontmz_/', '_blank')}
+          className="contact-button"
+        >
+          Instagram
+        </button>
+        <button 
+          onClick={() => window.open('https://www.facebook.com/onpreeya.jantakote.96', '_blank')}
+          className="contact-button"
+        >
+          Facebook
+        </button>
+        <button 
+          onClick={() => window.open('https://github.com/653450107-5', '_blank')}
+          className="contact-button"
+        >
+          GitHub
+        </button>
         <p>email : onpreeya.ja@kkumail.com</p>
       </div>
     </div>

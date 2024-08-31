@@ -1,6 +1,6 @@
-// app/pokemon/[name]/page.tsx
-import { useParams, useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+"use client";
+import { useParams, useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import './details.css';
 
 interface PokemonDetails {
@@ -10,7 +10,7 @@ interface PokemonDetails {
     other: {
       'official-artwork': {
         front_default: string;
-      };
+      }
     };
   };
   height: number;
@@ -64,7 +64,7 @@ export default function PokemonDetailPage() {
   }
 
   const renderStatBar = (statName: string, baseStat: number) => {
-    const maxStat = 255;
+    const maxStat = 255; 
     const percentage = (baseStat / maxStat) * 100;
     const shortStatName = statAbbreviations[statName] || statName;
 
@@ -76,7 +76,10 @@ export default function PokemonDetailPage() {
           <span className="stat-value">{baseStat}</span>
         </div>
         <div className="bar-container">
-          <div className="stat-bar-fill" style={{ width: `${percentage}%` }} />
+          <div
+            className="stat-bar-fill"
+            style={{ width: `${percentage}%` }}
+          />
         </div>
       </div>
     );
@@ -117,17 +120,4 @@ export default function PokemonDetailPage() {
       <button onClick={() => router.back()} className="back-button">Go Back</button>
     </div>
   );
-}
-
-export async function generateStaticParams() {
-  const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100'); // Fetch a list of Pokémon
-  const data = await res.json();
-  const paths = data.results.map((pokemon: any) => ({
-    params: { name: pokemon.name },
-  }));
-
-  return {
-    paths,
-    fallback: 'blocking', // or 'true' or 'false' depending on your needs
-  };
 }
