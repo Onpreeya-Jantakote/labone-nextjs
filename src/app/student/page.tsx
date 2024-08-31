@@ -1,5 +1,5 @@
-"use client"; // ทำให้คอมโพเนนต์นี้เป็น Client Component
-
+"use client";
+import { useParams } from "next/navigation";
 import React from 'react';
 import './student.css';
 
